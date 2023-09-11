@@ -3,9 +3,9 @@ psutil
 ray >= 2.5.1
 sentencepiece  # Required for LLaMA tokenizer.
 numpy
-torch >= 2.0.0
+# torch >= 2.0.0 # For ROCm, we manually install torch.
 transformers >= 4.33.1  # Required for Code Llama.
-xformers >= 0.0.21
+# xformers >= 0.0.21
 fastapi
 uvicorn
 pydantic < 2  # Required for OpenAI server.

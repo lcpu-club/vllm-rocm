@@ -21,3 +21,17 @@ __all__ = [
     "AsyncEngineArgs",
     "initialize_cluster",
 ]
+
+import os
+import torch
+
+BASE_DIR = os.path.dirname(__file__)
+LIB_DIR = os.path.join(BASE_DIR, "../build/lib")
+
+if not os.path.exists(LIB_DIR) or not os.path.exists(f"{LIB_DIR}/libvllm_rocm.so"):
+    raise RuntimeError(
+        f"Could not find the ROCm VLLM library libvllm_rocm.so at {LIB_DIR}. "
+        "Please build the ROCm library first or put it at the right place."
+    )
+
+torch.ops.load_library(os.path.join(LIB_DIR, "libvllm_rocm.so"))
