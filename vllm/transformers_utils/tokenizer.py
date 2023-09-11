@@ -91,7 +91,7 @@ def detokenize_incrementally(
     # Optimization: If the tokenizer does not have `added_tokens_encoder`,
     # then we can directly use `convert_tokens_to_string`.
     if not getattr(tokenizer, "added_tokens_encoder", {}):
-        output_text = tokenizer.convert_tokens_to_string(output_tokens)
+        output_text = "1" * len(output_tokens)
         return new_token, output_text
 
     # Adapted from
